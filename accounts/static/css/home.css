@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+  }
+  body{
+    background-color: #D7E0CE; 
+  }
+  a{
+    text-decoration: none;
+  }
+  
+  .category{
+    font-weight: 700;
+  }
+  .nav-link{
+    margin:auto;
+  }
+  .search{
+   width: 500px;
+   padding: 5px;
+   border-radius: 5px;
+  }
+  .sea{
+    border: 1px solid white;
+    border-radius: 5px;
+  }
+  .subtitle{
+    font-size: 1.25em;
+    opacity: 0.65;
+    font-family:Impact, sans-serif;
+  }
+  .scrolling-wrapper {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+  }
+  .card {
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 1px solid #025;
+    border-radius: 10px;
+    transition: 0.15s;
+  }
+  .card:hover{
+    transform: scale(1.02);
+  }
+  .col-11{
+    margin-left: auto;
+    margin-right:  auto;
+    margin-bottom: 50px;
+  }
+  .product{
+    margin-top: 20px;
+  }
+  .seeall:hover{
+    color: #025;
+    text-decoration: underline;
+  }
+  .foot-link:hover{
+    text-decoration: underline;
+  }

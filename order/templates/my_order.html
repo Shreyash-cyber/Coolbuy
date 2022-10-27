@@ -1,0 +1,150 @@
+{% load static %}
+{% load cart %}
+{% load custom %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoolBuy | Exclusive Buying Site</title>
+    <!-- link -->
+    <link rel="stylesheet" href="{% static 'bootcss/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'myorder.css' %}">
+    <!-- script -->
+    <script src="{% static 'js/cart.js' %}"></script>
+</head>
+<body>
+    <!-- navbar -->
+    <!-- Image and text -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #025;">
+      <div class="container-fluid">
+        <a class="navbar-brand text-white" href="{% url 'accounts:home' %}" style="font-size: 25px; font-weight:600;">
+          <img src="{% static 'image/logo/logo.png' %}" class="d-inline-block align-text-center"
+            style="margin-left: 150px; height: 40px;">
+          CoolBuy
+        </a>
+
+        <div class="navbar-nav">
+          <form class="form-inline">
+            <input class="search" type="search" placeholder="Search..." aria-label="Search" required>
+            <button class="btn sea btn-outline-primary"><i class="fas fa-search text-white"></i></button>
+          </form>
+        </div>
+
+    <!-- Links -->
+    {% if user.is_authenticated %}
+
+      <!-- Right -->
+      <div class="navbar-nav">
+        <a href="#" class="nav-link text-white text-center"><i class="fas fa-heart"></i></a>
+          <a href="#" class="nav-link text-white text-center"><i class="fas fa-bell"></i></a>
+          <a class="nav-link text-white" href="#"><i class="fas fa-shopping-cart"></i></a>
+          <div class="dropdown">
+          <img class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="height:50px; border-radius: 50%; margin-right:150px;"
+            src="{{ user.profile.profile_pic.url }}">
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li class="item text-center" style="font-weight: bolder;"> Hi <strong
+                style="color: #B9C04C; cursor:default;"> {{ user.username }} 👋 </strong></li>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item text-center" href="{% url 'accounts:profile'  request.user.username %}">My Account</a>
+            <a class="dropdown-item text-center" href="#">My Order</a>
+            <a class="dropdown-item text-center" href="#">My Address</a>
+            <a class="dropdown-item text-center" href="#">My Cart</a>
+            <a class="dropdown-item text-center" href="{% url 'accounts:logout' %}">Log Out</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item text-center" href="#">Settings</a>
+            <a class="dropdown-item text-center" href="#">Help</a>
+            <a class="dropdown-item text-center" href="#">Privacy Policy</a>
+          </div>
+          </div>
+      </div>
+        {% else %}
+          <div class="navbar-nav">
+            <a class="nav-link text-white" href="#"><i class="fas fa-shopping-cart">Cart</i></a>
+            <a class="nav-link" href="{% url 'accounts:login' %}"><button type="button" class="btn btn-outline-primary text-white" style="border-radius: 10px;">Log In</button></a>
+            <a class="nav-link" href="{% url 'accounts:register' %}"><button type="button" class="btn btn-outline-primary text-white" style="border-radius: 10px;" >Sign Up</button></a>
+          </div>
+        {% endif %}
+      </div>
+    </nav>
+            <div class="col-lg-11">
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table table-borderless table-shopping-cart">
+                            <thead class="text-muted">
+                              <h1 style="font-size: 60px; color:#025; margin-left:15px; float:left;">My Orders <i class="fas fa-boxes"></i></h1>
+                              <a href="#"  style="float: right; margin-top:20px; margin-right: 20px;">Back To Site </a>
+                                <tr class="small text-uppercase">
+                                  <th scope="col">S NO.</th>
+                                    <th scope="col">Order Id</th>
+                                    <th scope="col">Total Price</th>
+                                    <th scope="col">Method</th>
+                                    <th scope="col">Payment Status</th>
+                                    <th scope="col">Order Status</th>
+                                    <th scope="col">View</th>
+                                </tr>
+                            </thead>
+                            <tbody style="margin-bottom: 20px;">
+                              {% for order in user_order %}
+                              <tr style="font-weight: 700; font-size:20px;">
+                                <th scope="row">{{forloop.counter}}</th>
+                                <td>{{order.order_id}}</td>
+                                <td>{{order.total_price|currency}}</td>
+                                <td>{{order.method}}</td>
+                                {% if order.payment_status == 1 %}
+                                <td>Success</td>
+                                {% endif %}
+                                {% if order.payment_status == 2 %}
+                                <td>Failure</td>
+                                {% endif %}
+                                {% if order.payment_status == 3 %}
+                                <td>Pending</td>
+                                {% endif %}
+                                {% if order.status == 1 %}
+                                <td>Pending</td>
+                                {% endif %}
+                                {% if order.status == 2 %}
+                                <td>Confirmed</td>
+                                {% endif %}
+                                {% if order.status == 3 %}
+                                <td>Packed</td>
+                                {% endif %}
+                                {% if order.status == 4 %}
+                                <td>Shipped</td>
+                                {% endif %}
+                                {% if order.status == 5 %}
+                                <td>In Way</td>
+                                {% endif %}
+                                {% if order.status == 6 %}
+                                <td>Arrived Destination</td>
+                                {% endif %}
+                                {% if order.status == 7 %}
+                                <td>Recieved</td>
+                                {% endif %}
+                                {% if order.status == 8 %}
+                                <td>Completed</td>
+                                {% endif %}
+                                <td> <a href="#" class="btn btn-primary">Details</a> </td>
+                              </tr>
+                              {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+      </div>
+
+
+                        
+    <!-- footer -->
+      <!-- script -->
+      <!-- script -->
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+       crossorigin="anonymous"></script>
+      <script src="https://kit.fontawesome.com/b996cccd07.js" crossorigin="anonymous"></script>
+</body>
+</html>

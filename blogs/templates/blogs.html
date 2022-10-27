@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoolBuy | Exclusive Buying Site Blogs</title>
+    <!-- link -->
+    <link rel="stylesheet" href="{% static 'bootcss/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+</head>
+<body>
+        <!-- navbar -->
+    <!-- Image and text -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #025;">
+        <div class="container-fluid">
+          <a class="navbar-brand text-white" href="{% url 'accounts:home' %}" style="font-size: 25px; font-weight:600;">
+            <img src="{% static 'image/logo/logo.png' %}" class="d-inline-block align-text-center"
+              style="margin-left: 150px; height: 40px;">
+            CoolBuy
+          </a>
+  
+          <div class="navbar-nav">
+            <form class="form-inline">
+              <input class="search" type="search" placeholder="Search..." aria-label="Search" required>
+              <button class="btn sea btn-outline-primary"><i class="fas fa-search text-white"></i></button>
+            </form>
+          </div>
+  
+      <!-- Links -->
+      {% if user.is_authenticated %}
+  
+        <!-- Right -->
+        <div class="navbar-nav">
+            <a href="#" class="nav-link text-white text-center"><i class="fas fa-bell"></i></a>
+            <a class="nav-link text-white" href="#"><i class="fas fa-shopping-cart"></i></a>
+            <div class="dropdown">
+            <img class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="height:50px; border-radius: 50%; margin-right:150px;"
+              src="{{ user.profile.profile_pic.url }}">
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li class="item text-center" style="font-weight: bolder;"> Hi <strong
+                  style="color: #B9C04C; cursor:default;"> {{ user.username }} 👋 </strong></li>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item text-center" href="{% url 'accounts:profile'  request.user.username %}">My Account</a>
+              <a class="dropdown-item text-center" href="#">My Order</a>
+              <a class="dropdown-item text-center" href="#">My Address</a>
+              <a class="dropdown-item text-center" href="#">My Cart</a>
+              <a class="dropdown-item text-center" href="{% url 'accounts:logout' %}">Log Out</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item text-center" href="#">Settings</a>
+              <a class="dropdown-item text-center" href="#">Help</a>
+              <a class="dropdown-item text-center" href="#">Privacy Policy</a>
+            </div>
+            </div>
+        </div>
+          {% else %}
+            <div class="navbar-nav">
+              <a class="nav-link text-white" href="#"><i class="fas fa-shopping-cart">Cart</i></a>
+              <a class="nav-link" href="{% url 'accounts:login' %}"><button type="button" class="btn btn-outline-primary text-white" style="border-radius: 10px;">Log In</button></a>
+              <a class="nav-link" href="{% url 'accounts:register' %}"><button type="button" class="btn btn-outline-primary text-white" style="border-radius: 10px;" >Sign Up</button></a>
+            </div>
+          {% endif %}
+        </div>
+      </nav>
+      <!-- section -->
+      <div class="col-11 card">
+        <h1 class="text-center" style="color: #025; font-family:cursive;">CoolBuy Blogs Page</h1>
+          <div class="blogs">
+            {% for blogs in blog_list %}
+            <a class="products" href="{% url 'blog:readblog' title=blogs.urltitle %}">
+              <div class="blog col-4" style="width: 18rem; height:350px">
+                  <img class="img" src="{{ blogs.title_image.url }}" alt="" height="250px" width="100%">
+                  <div class="detail">
+                  <h4 class="title text-center" style="color: #025; font-family:cursive;">{{blogs.title}}</h4>
+                  </div>
+                </div>
+              </a>
+            {% endfor %}
+          </div>
+      </div>
+      <!-- script -->
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+       crossorigin="anonymous"></script>
+      <script src="https://kit.fontawesome.com/b996cccd07.js" crossorigin="anonymous"></script>
+</body>
+</html>

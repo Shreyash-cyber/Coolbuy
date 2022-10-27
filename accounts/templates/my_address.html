@@ -1,0 +1,53 @@
+{% extends 'account.html' %}
+{% load static %}
+ {% block head %}
+ <link rel="stylesheet" href="{% static 'css/my_address.css' %}">
+ {% endblock %}
+ {% block body %}
+     <div class="add">
+        <a href="{% url 'accounts:add_address' request.user.username %}" class="btn btn-outline-primary">Add a new address</a>
+     </div>
+     <div class="address">
+     {% for address in user_address %}
+        <div class="card col-10">
+            <div class="detail">
+                <p>Reciever Name: <span>{{ address.reciever_name}}</span></p>
+                <p>Phone No: <span>{{ address.phone_no }}</span></p>
+                <p>State/Union Territory: {{ address.state }}</p>
+                <p>City: <span>{{ address.city }}</span></p>
+                <p>Area Pincode: <span>{{ address.pincode }}</span></p>
+                <p style="display: inline-block;">Address: <span>{{address.address}}</span></p>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModalCenter" style="float:right;">
+                    Delete
+                  </button>
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLongTitle">Delete Address</h5>
+                          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          Do you really wish to delete this address permanantely ?
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <a class="btn btn-outline-danger" href="{% url 'accounts:delete_address' id=address.id %}">Delete It</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <a href="{% url 'accounts:edit_address' id=address.id %}" style="float: right; margin-right:5px;" class="btn btn-outline-secondary">Edit</a>
+                {% if address.default %}
+                <p style="float: right; margin-right:5px; border:none;" class="btn btn-outline-primary">Default Address</p> 
+                {% endif %}
+                {% if not address.default %}
+                <a href="{% url 'accounts:default-address' id=address.id %}" style="float: right; margin-right:5px;" class="btn btn-primary">Set Default</a>
+                {% endif %}
+            </div>
+          </div>
+     {% endfor %}
+     </div>
+ {% endblock %}

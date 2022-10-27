@@ -1,0 +1,57 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoolBuy | Log IN</title>
+  <!-- links -->
+  <!-- link -->
+  <link rel="stylesheet" href="{% static 'bootcss/bootstrap.min.css'%}">
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #025;">
+    <div class="container-fluid">
+      <a class="navbar-brand text-white" href="{% url 'accounts:home' %}" style="font-size: 25px; font-weight:600;">
+        <img src="{% static 'image/logo/logo.png' %}" class="d-inline-block align-text-center"
+          style="margin-left: 150px; height: 40px;">
+        CoolBuy
+      </a>
+      <strong class="sign" ><a class="btn btn-outline-primary text-white" href="{% url 'accounts:register' %}">Sign Up</a></strong>
+    </div>
+  </nav>
+  <div class="card col-5">
+    <div class="form">
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group form-control-lg">
+          <div class="log_img">
+            <img src="{% static 'image/default.png' %}" style="height: 60px;">
+            </div>
+          <h2 class="head text-center"> <strong> LOG IN </strong> </h2>
+          <div class="forum">
+            {{ form.username|as_crispy_field }} <br>
+            {{ form.password|as_crispy_field }} <br>
+            {{ form.remember_me|as_crispy_field }}
+          </div>
+          <input type="submit" class="btn btn-primary btn-lg btn-block" value="Log In"> <br>
+          <input type="hidden" name="next" value="/" />
+          <br>
+          <a class="forgot" href="#">Forgot Password? </a>
+          <p class="li">Don't have a account? <strong> <a href="{% url 'accounts:register' %}">Click Here</a> </strong>
+          </p> <br>
+        </div>
+      </form>
+    </div>
+  </div>
+  </div>
+</body>
+
+</html>

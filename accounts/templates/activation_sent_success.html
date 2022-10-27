@@ -1,0 +1,38 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoolBuy | Exclusive Buying Site</title>
+    <!-- link -->
+    <link rel="stylesheet" href="{% static 'bootcss/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #025;">
+    <div class="container-fluid">
+      <a class="navbar-brand text-white" href="{% url 'accounts:home' %}" style="font-size: 25px; font-weight:600;">
+        <img src="{% static 'image/logo/logo.png' %}" class="d-inline-block align-text-center"
+          style="margin-left: 150px; height: 40px;">
+        CoolBuy
+      </a>
+          <strong class="log" ><a class="btn btn-outline-primary text-white" href="{% url 'accounts:login' %}">Log In</a></strong>
+        </div>
+      </nav>
+      <div class="card col-5">
+      <div class="form">
+          <h3 class="text-center" style="color: #025;">We Just Sent You A Email On Your Email Id Please Verify To Continue The Shopping. </h3>
+          <h5 class="text-center" style="color: #025;">Thank You</h5>
+
+            <p class="li">If you already verfied you account <strong> <a href="{% url 'accounts:login' %}">Click Here</a> </strong>
+            </p>
+      </div>
+      </div>
+    </div>
+</body>
+</html>

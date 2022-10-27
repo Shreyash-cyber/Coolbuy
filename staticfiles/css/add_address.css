@@ -1,0 +1,24 @@
+.card{
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10x;
+    box-shadow: 5px 10px #888888;
+}
+.col-5{
+    display: inline-block;
+    font-size: 20px;
+}
+.btn-outline-success{
+    width: 100%;
+}
+.add{
+    float: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.back:hover{
+    text-decoration: underline;
+}

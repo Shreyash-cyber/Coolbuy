@@ -1,0 +1,201 @@
+{% load static %}
+{% load cart %}
+{% load custom %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoolBuy | Exclusive Buying Site</title>
+    <!-- link -->
+    <link rel="stylesheet" href="{% static 'bootcss/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'cart.css' %}">
+    <!-- script -->
+    <script src="{% static 'js/cart.js' %}"></script>
+</head>
+<body>
+ <!-- navbar -->
+    <!-- Image and text -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #025;">
+      <div class="container-fluid">
+        <a class="navbar-brand text-white" href="{% url 'accounts:home' %}" style="font-size: 25px; font-weight:600;">
+          <img src="{% static 'image/logo/logo.png' %}" class="d-inline-block align-text-center"
+            style="margin-left: 150px; height: 40px;">
+          CoolBuy
+        </a>
+
+        <div class="navbar-nav">
+          <form class="form-inline" action="{% url 'products:search' %}">
+            {% csrf_token %} 
+            <input class="search" type="search" placeholder="Search..." aria-label="Search" name="search" required>
+            <button class="btn sea btn-outline-primary" type="submit" value="Search"><i class="fas fa-search text-white"></i></button>
+          </form>
+        </div>
+
+    <!-- Links -->
+    {% if user.is_authenticated %}
+
+      <!-- Right -->
+      <div class="navbar-nav">
+        <a href="#" class="nav-link text-white text-center"><i class="fas fa-heart"></i>
+          <span class="badge" style="background-color: white; color:#025; padding:3px;">{{wish|length}}</a>
+          <a href="#" class="nav-link text-white text-center"><i class="fas fa-bell"></i>
+            <span class="badge" style="background-color: white; color:#025; padding:3px;">{{wish|length}}</a>
+          <a class="nav-link text-white" href="{% url 'orders:cart' %}"><i class="fas fa-shopping-cart"></i>
+            <span class="badge" style="background-color: white; color:#025; padding:3px;">{{request.session.cart.keys|length}}</span></a>
+          <div class="dropdown">
+          <img class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="height:50px; border-radius: 50%; margin-right:150px;"
+            src="{{ user.profile.profile_pic.url }}">
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li class="item text-center" style="font-weight: bolder;"> Hi <strong
+                style="color: #B9C04C; cursor:default;"> {{ user.username }} 👋 </strong></li>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item text-center" href="{% url 'accounts:profile'  request.user.username %}">My Account</a>
+            <a class="dropdown-item text-center" href="#">My Order</a>
+            <a class="dropdown-item text-center" href="#">My Address</a>
+            <a class="dropdown-item text-center" href="#">My Cart</a>
+            <a class="dropdown-item text-center" href="{% url 'accounts:logout' %}">Log Out</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item text-center" href="#">Settings</a>
+            <a class="dropdown-item text-center" href="#">Help</a>
+            <a class="dropdown-item text-center" href="#">Privacy Policy</a>
+          </div>
+          </div>
+      </div>
+        {% else %}
+          <div class="navbar-nav">
+            <a href="#" class="nav-link text-white text-center"><i class="fas fa-heart"></i>
+              <span class="badge" style="background-color: white; color:#025; padding:3px;">{{wish|length}}</a>
+            <a class="nav-link text-white" href="{% url 'orders:cart' %}"><i class="fas fa-shopping-cart"></i>
+              <span class="badge" style="background-color: white; color:#025; padding:3px;">{{request.session.cart.keys|length}}</span></a>
+            <a class="nav-link" href="{% url 'accounts:login' %}"><button type="button" class="btn btn-outline-primary text-white" style="border-radius: 10px;">Log In</button></a>
+            <a class="nav-link" href="{% url 'accounts:register' %}"><button type="button" class="btn btn-outline-primary text-white" style="border-radius: 10px;" >Sign Up</button></a>
+          </div>
+        {% endif %}
+      </div>
+    </nav>
+      <div class="container-fluid col-11">
+        <div class="row" style="margin-top: 20px;">
+            <aside class="col-lg-9">
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table table-borderless table-shopping-cart">
+                            <thead class="text-muted">
+                              <h1 style="font-size: 60px; color:#025; margin-left:15px; float:left;">My Cart<i style="font-size: 55px;" class="fas fa-shopping-cart"></i></h1>
+                              <a href="#"  style="float: right; margin-top:20px; margin-right: 20px;">Back To Site </a>
+                                <tr class="small text-uppercase">
+                                  <th scope="col">S NO.</th>
+                                    <th scope="col">Product</th>
+                                    <th scope="col" >Name</th>
+                                    <th scope="col" >Size</th>
+                                    <th scope="col" >Price</th>
+                                    <th scope="col"> Remove Items</th>
+                                </tr>
+                            </thead>
+                            <tbody style="margin-bottom: 20px;">
+                              {% for item in items %}
+                              <tr>
+                                <th scope="row">{{forloop.counter}}</th>
+                                <td> <img src="{{item.first.url}}" alt="" height="100px"></td>
+                                <td>{{item.name}}</td>
+                                {% if item.swag %}
+                                 <td>{{item|cart_size:request.session.cart}}</td>
+                                 {% endif %}
+                                 {% if not item.swag %}
+                                 <td>Regular </td>
+                                 {% endif %}
+                                <td>{{item.price|currency}}</td>
+                                <td> <a href="#">Remove</a> </td>
+                              </tr>
+                              {% endfor %}
+                            </tbody>
+                        </table>
+                        {% for item in items %}
+                        {% empty %}
+                        <div class="text-center">
+                          <img src="{% static 'svg/sleepingowl.svg' %}" style="height: 300px;" alt="image not found">
+                          <h2 style="color: #025;">Your Cart Is Empty Add Products To Place The Order</h2>
+                        </div>
+                        {% endfor %}
+                        <p style="font-weight:600;font-size:30px; float:left; margin-left:20px;">Select A Payment Method:</p>
+                        <!-- form for online payment -->
+                        <form action="{% url 'orders:checkout' %}" method="POST">
+                          {% csrf_token %}
+                          <input type="number" name="paying_price" value="{{items|total_price:request.session.cart}}" hidden>
+                            <input type="text" value="Prepaid" name="payment" hidden>
+                          <button class="btn btn-outline-primary" type="submit" style="float:right; margin-right:20px; border:2px solid blue">Pay Instantly</button>
+                        </form>
+                        <!-- form for cod -->
+                        <form action="{% url 'orders:checkout-post' %}" method="POST">
+                          {% csrf_token %}
+                          <input type="number" name="paying_price" value="{{items|total_price:request.session.cart}}" hidden>
+                            <input type="text" value="Postpaid" name="payment" hidden>
+                          <button class="btn btn-outline-primary" type="submit" style="float:right; margin-right:20px; border:2px solid blue">Cash On Delivery</button>
+                        </form>
+                    </div>
+                </div>
+            </aside>
+            <aside class="col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group"> <label>Have coupon?</label>
+                                <div class="input-group"> <input type="text" class="form-control coupon" name="" placeholder="Coupon code"> <span class="input-group-append"> <button class="btn btn-primary btn-apply coupon">Apply</button> </span> </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card">
+                <div class="card-body">
+                   {% for address in addresses %}
+                   <p style="font-size: 20px;font-weight:600;">Billing/Shipping Address</p>
+                   {% if address.default %}
+                   <p>Reciver Name: {{address.reciever_name}} <br>
+                     Phone No: {{address.phone_no}} <br>
+                     State: {{ address.state}} <br>
+                     Area Pincode: {{address.pincode}} <br>
+                     City: {{address.city}} <br>
+                     Address: {{address.address}} <br>
+                   </p>
+                   <p style="float: left; font-weight:500;">Using Default Address</p>
+                   <a href="{% url 'accounts:address' request.user.username %}" style="float: right;"> Change Address</a>
+                   {% endif %}
+                   {% empty %}
+                   Add a adrress and make it default to recieve order
+                   {% endfor %}
+                </div>
+            </div>
+                <div class="card">
+                    <div class="card-body">
+                        <dl class="dlist-align">
+                            <dt style="float: left; font-size:20px; margin-right:10px;">Total price:</dt>
+                            <dd style="font-size: 20px; color:#025;" class="text-right">{{items|total_actual_price:request.session.cart|currency}}</dd>
+                        </dl>
+                        <dl class="dlist-align">
+                            <dt style="float: left; font-size:20px; margin-right:10px;">Discount:</dt>
+                            <dd style="font-size: 20px; color:#025;" class="text-right text-danger">{{items|discount_price:request.session.cart|currency}}</dd>
+                        </dl>
+                        <dl class="dlist-align">
+                            <dt style="float: left; font-size:20px; margin-right:10px;">Total Paying Amount:</dt>
+                            <dd style="font-size: 20px; color:#025;" class="text-right"><strong>{{items|total_price:request.session.cart|currency}}</strong></dd>
+                        </dl>
+                        <p style="font-size:18px; font-weight:700;">Note* <span style="font-size: 15px; font-weight:400;">ALL Order Above {{499|currency}} Are Eligble For Free Shipping <i class="fas fa-shipping-fast fa-sm" style="color: #000;"></i></span></p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+    
+    <!-- footer -->
+      <!-- script -->
+      <!-- script -->
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+       crossorigin="anonymous"></script>
+      <script src="https://kit.fontawesome.com/b996cccd07.js" crossorigin="anonymous"></script>
+</body>
+</html>

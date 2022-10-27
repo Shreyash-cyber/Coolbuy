@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+  }
+  body{
+    background-color: #D7E0CE; 
+  }
+  a{
+    text-decoration: none;
+  }
+  
+  .category{
+    font-weight: 700;
+  }
+  .nav-link{
+    margin:auto;
+  }
+  .search{
+   width: 500px;
+   padding: 5px;
+   border-radius: 5px;
+  }
+  .sea{
+    border: 1px solid white;
+    border-radius: 5px;
+  }
+.col-10{
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    height: 100%;
+}
+.mar{
+    margin-top: 15px;
+   }
+.col-6{
+       display: inline-block;
+       border:none;
+   }
+fieldset.active {
+    display: inline-block !important
+    }
+fieldset {
+    display: none
+    }
+
+.pic0 {
+    width: 450px;
+    height: 470px;
+    margin-left: 67px;
+    margin-right: auto;
+    display: inline-block;
+}
+
+.product-pic {
+    padding-left: auto;
+    padding-right: auto;
+    width: 100%;
+    display:inline-block;
+    }
+
+.thumbnails {
+    position: absolute
+}
+
+.fit-image {
+    width: 100%;
+    object-fit: cover
+}
+
+.tb {
+    width: 64px;
+    height: 64px;
+    border: 2px solid #025;
+    margin-bottom: 2px;
+    opacity: 0.4;
+    cursor: pointer
+}
+
+.tb-active {
+    opacity: 1
+}
+
+.thumbnail-img {
+    width: 60px;
+    height: 60px
+}
+
+@media screen and (max-width: 768px) {
+    .pic0 {
+        width: 250px;
+        height: 350px
+    }
+}
+.Detail{
+    margin-left: 10px;
+}
+.from{
+    font-size: 12px;
+    color: #025;
+}
+.back:hover{
+    color: #025;
+    text-decoration: underline;
+}
+.form{
+    margin-top: 15px;
+}
+.add{
+    width:280px;
+    margin-right: 10px;
+}
+.wish{
+    width: 280px;
+}
+.prefer{
+    margin-bottom: 10px;
+}
+.scrolling-wrapper {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+.col-3 {
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 1px solid #025;
+    border-radius: 10px;
+    transition: 0.15s;
+}
+.col-3:hover{
+    transform: scale(1.02);
+}

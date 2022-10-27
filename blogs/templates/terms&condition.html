@@ -1,0 +1,352 @@
+{% load static %}
+{% load custom %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoolBuy | Exclusive Buying Site Return Policy</title>
+    <!-- link -->
+    <link rel="stylesheet" href="{% static 'bootcss/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/privacy.css' %}">
+</head>
+<body>
+        <!-- navbar -->
+    <!-- Image and text -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #025;">
+        <div class="container-fluid">
+          <a class="navbar-brand text-white" href="{% url 'accounts:home' %}" style="font-size: 25px; font-weight:600;">
+            <img src="{% static 'image/logo/logo.png' %}" class="d-inline-block align-text-center"
+              style="margin-left: 150px; height: 40px;">
+            CoolBuy
+          </a>
+
+          <div class="navbar-nav">
+            <form class="form-inline">
+              <input class="search" type="search" placeholder="Search..." aria-label="Search" required>
+              <button class="btn sea btn-outline-primary"><i class="fas fa-search text-white"></i></button>
+            </form>
+          </div>
+
+      <!-- Links -->
+      {% if user.is_authenticated %}
+
+        <!-- Right -->
+        <div class="navbar-nav">
+            <a href="#" class="nav-link text-white text-center"><i class="fas fa-bell"></i></a>
+            <a class="nav-link text-white" href="#"><i class="fas fa-shopping-cart"></i></a>
+            <div class="dropdown">
+            <img class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="height:50px; border-radius: 50%; margin-right:150px;"
+              src="{{ user.profile.profile_pic.url }}">
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li class="item text-center" style="font-weight: bolder;"> Hi <strong
+                  style="color: #B9C04C; cursor:default;"> {{ user.username }} 👋 </strong></li>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item text-center" href="{% url 'accounts:profile'  request.user.username %}">My Account</a>
+              <a class="dropdown-item text-center" href="#">My Order</a>
+              <a class="dropdown-item text-center" href="#">My Address</a>
+              <a class="dropdown-item text-center" href="#">My Cart</a>
+              <a class="dropdown-item text-center" href="{% url 'accounts:logout' %}">Log Out</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item text-center" href="#">Settings</a>
+              <a class="dropdown-item text-center" href="#">Help</a>
+              <a class="dropdown-item text-center" href="#">Privacy Policy</a>
+            </div>
+            </div>
+        </div>
+          {% else %}
+            <div class="navbar-nav">
+              <a class="nav-link text-white" href="#"><i class="fas fa-shopping-cart">Cart</i></a>
+              <a class="nav-link" href="{% url 'accounts:login' %}"><button type="button" class="btn btn-outline-primary text-white" style="border-radius: 10px;">Log In</button></a>
+              <a class="nav-link" href="{% url 'accounts:register' %}"><button type="button" class="btn btn-outline-primary text-white" style="border-radius: 10px;" >Sign Up</button></a>
+            </div>
+          {% endif %}
+        </div>
+      </nav>
+      <!-- section -->
+      <div class="col-11 card">
+        <div class="detail">
+        <h1 class="text-center" style="color: #025;">Terms & Conditions</h1>
+
+<p>Welcome to CoolBuy!</p>
+
+<p>These terms and conditions outline the rules and regulations for the use of CoolBuy's Website, located at https://www.coolbuy.org/.</p>
+
+<p>By accessing this website we assume you accept these terms and conditions. Do not continue to use CoolBuy if you do not agree to take all of the terms and conditions stated on this page.</p>
+
+<p>The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: "Client", "You" and "Your" refers to you, the person log on this website and compliant to the Company’s terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to our Company. "Party", "Parties", or "Us", refers to both the Client and ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client’s needs in respect of provision of the Company’s stated services, in accordance with and subject to, prevailing law of Netherlands. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same.</p>
+
+<h3><strong>Cookies</strong></h3>
+
+<p>We employ the use of cookies. By accessing CoolBuy, you agreed to use cookies in agreement with the CoolBuy's Privacy Policy. </p>
+
+<p>Most interactive websites use cookies to let us retrieve the user’s details for each visit. Cookies are used by our website to enable the functionality of certain areas to make it easier for people visiting our website. Some of our affiliate/advertising partners may also use cookies.</p>
+
+<h3><strong>License</strong></h3>
+
+<p>Unless otherwise stated, CoolBuy and/or its licensors own the intellectual property rights for all material on CoolBuy. All intellectual property rights are reserved. You may access this from CoolBuy for your own personal use subjected to restrictions set in these terms and conditions.</p>
+
+<p>You must not:</p>
+<ul>
+    <li>Republish material from CoolBuy</li>
+    <li>Sell, rent or sub-license material from CoolBuy</li>
+    <li>Reproduce, duplicate or copy material from CoolBuy</li>
+    <li>Redistribute content from CoolBuy</li>
+</ul>
+
+<p>This Agreement shall begin on the date hereof. Our Terms and Conditions were created with the help of the <a href="https://www.termsandconditionsgenerator.com">Terms And Conditions Generator</a>.</p>
+
+<p>Parts of this website offer an opportunity for users to post and exchange opinions and information in certain areas of the website. CoolBuy does not filter, edit, publish or review Comments prior to their presence on the website. Comments do not reflect the views and opinions of CoolBuy,its agents and/or affiliates. Comments reflect the views and opinions of the person who post their views and opinions. To the extent permitted by applicable laws, CoolBuy shall not be liable for the Comments or for any liability, damages or expenses caused and/or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website.</p>
+
+<p>CoolBuy reserves the right to monitor all Comments and to remove any Comments which can be considered inappropriate, offensive or causes breach of these Terms and Conditions.</p>
+
+<p>You warrant and represent that:</p>
+
+<ul>
+    <li>You are entitled to post the Comments on our website and have all necessary licenses and consents to do so;</li>
+    <li>The Comments do not invade any intellectual property right, including without limitation copyright, patent or trademark of any third party;</li>
+    <li>The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful material which is an invasion of privacy</li>
+    <li>The Comments will not be used to solicit or promote business or custom or present commercial activities or unlawful activity.</li>
+</ul>
+
+<p>You hereby grant CoolBuy a non-exclusive license to use, reproduce, edit and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats or media.</p>
+
+<h3><strong>Hyperlinking to our Content</strong></h3>
+
+<p>The following organizations may link to our Website without prior written approval:</p>
+
+<ul>
+    <li>Government agencies;</li>
+    <li>Search engines;</li>
+    <li>News organizations;</li>
+    <li>Online directory distributors may link to our Website in the same manner as they hyperlink to the Websites of other listed businesses; and</li>
+    <li>System wide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and charity fundraising groups which may not hyperlink to our Web site.</li>
+</ul>
+
+<p>These organizations may link to our home page, to publications or to other Website information so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products and/or services; and (c) fits within the context of the linking party’s site.</p>
+
+<p>We may consider and approve other link requests from the following types of organizations:</p>
+
+<ul>
+    <li>commonly-known consumer and/or business information sources;</li>
+    <li>dot.com community sites;</li>
+    <li>associations or other groups representing charities;</li>
+    <li>online directory distributors;</li>
+    <li>internet portals;</li>
+    <li>accounting, law and consulting firms; and</li>
+    <li>educational institutions and trade associations.</li>
+</ul>
+
+<p>We will approve link requests from these organizations if we decide that: (a) the link would not make us look unfavorably to ourselves or to our accredited businesses; (b) the organization does not have any negative records with us; (c) the benefit to us from the visibility of the hyperlink compensates the absence of CoolBuy; and (d) the link is in the context of general resource information.</p>
+
+<p>These organizations may link to our home page so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products or services; and (c) fits within the context of the linking party’s site.</p>
+
+<p>If you are one of the organizations listed in paragraph 2 above and are interested in linking to our website, you must inform us by sending an e-mail to CoolBuy. Please include your name, your organization name, contact information as well as the URL of your site, a list of any URLs from which you intend to link to our Website, and a list of the URLs on our site to which you would like to link. Wait 2-3 weeks for a response.</p>
+
+<p>Approved organizations may hyperlink to our Website as follows:</p>
+
+<ul>
+    <li>By use of our corporate name; or</li>
+    <li>By use of the uniform resource locator being linked to; or</li>
+    <li>By use of any other description of our Website being linked to that makes sense within the context and format of content on the linking party’s site.</li>
+</ul>
+
+<p>No use of CoolBuy's logo or other artwork will be allowed for linking absent a trademark license agreement.</p>
+
+<h3><strong>iFrames</strong></h3>
+
+<p>Without prior approval and written permission, you may not create frames around our Webpages that alter in any way the visual presentation or appearance of our Website.</p>
+
+<h3><strong>Content Liability</strong></h3>
+
+<p>We shall not be hold responsible for any content that appears on your Website. You agree to protect and defend us against all claims that is rising on your Website. No link(s) should appear on any Website that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights.</p>
+
+<h3><strong>Your Privacy</strong></h3>
+
+<p>Please read Privacy Policy</p>
+
+<h3><strong>Reservation of Rights</strong></h3>
+
+<p>We reserve the right to request that you remove all links or any particular link to our Website. You approve to immediately remove all links to our Website upon request. We also reserve the right to amen these terms and conditions and it’s linking policy at any time. By continuously linking to our Website, you agree to be bound to and follow these linking terms and conditions.</p>
+
+<h3><strong>Removal of links from our website</strong></h3>
+
+<p>If you find any link on our Website that is offensive for any reason, you are free to contact and inform us any moment. We will consider requests to remove links but we are not obligated to or so or to respond to you directly.</p>
+
+<p>We do not ensure that the information on this website is correct, we do not warrant its completeness or accuracy; nor do we promise to ensure that the website remains available or that the material on the website is kept up to date.</p>
+
+<h3><strong>Disclaimer</strong></h3>
+
+<p>To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and the use of this website. Nothing in this disclaimer will:</p>
+
+<ul>
+    <li>limit or exclude our or your liability for death or personal injury;</li>
+    <li>limit or exclude our or your liability for fraud or fraudulent misrepresentation;</li>
+    <li>limit any of our or your liabilities in any way that is not permitted under applicable law; or</li>
+    <li>exclude any of our or your liabilities that may not be excluded under applicable law.</li>
+</ul>
+
+<p>The limitations and prohibitions of liability set in this Section and elsewhere in this disclaimer: (a) are subject to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer, including liabilities arising in contract, in tort and for breach of statutory duty.</p>
+
+<p>As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</p>
+        </div>
+      </div>
+      <!-- footer -->
+    <footer class="page-footer font-small lighten-5" style="background-color: #025;" >
+
+      <div style="background-color: #0bdbdb;">
+        <div class="container">
+
+          <!-- Grid row-->
+          <div class="row py-4 d-flex align-items-center">
+
+            <!-- Grid column -->
+            <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+              <h6 class="mb-0">Get connected with us on social networks!</h6>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-6 col-lg-7 text-center text-md-right">
+
+              <!-- Facebook -->
+              <a class="fb-ic foot-link">
+                <i class="fab fa-facebook-f text-white fa-lg" style="margin-right: 20px;"> </i>
+              </a>
+              <!-- Twitter -->
+              <a class="tw-ic foot-link">
+                <i class="fab fa-twitter text-white fa-lg" style="margin-right: 20px;"> </i>
+              </a>
+              <!-- Google +-->
+              <a class="gplus-ic foot-link">
+                <i class="fab fa-google-plus-g text-white fa-lg" style="margin-right: 20px;"> </i>
+              </a>
+              <!--Instagram-->
+              <a class="ins-ic foot-link">
+               <i class="fab fa-instagram text-white fa-lg" style="margin-right: 20px;"> </i>
+              </a>
+
+            </div>
+            <!-- Grid column -->
+
+          </div>
+          <!-- Grid row-->
+
+        </div>
+      </div>
+
+      <!-- Footer Links -->
+      <div class="container text-center text-md-left mt-5">
+
+        <!-- Grid row -->
+        <div class="row mt-3 dark-grey-text">
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+
+            <!-- Content -->
+            <h6 class="font-weight-bold" style="color: #B9C04C;"><img src="{% static 'image/logo/logo.png' %}" alt="" style="height: 35px;" class="d-inline-block align-text-center"> CoolBuy</h6>
+            <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+            <p class="text-white">CoolBuy is authentic cool stuff ecommerce shopping site which sell product with the help of local vendor and local brands and delivered it to his customers.</p>
+
+            <div style=" margin-top:40px">
+             <p style="float: left;"><i class="fas fa-shipping-fast fa-2x" style="color: #B9C04C;"></i></p>
+             <p style="margin-left: 10px;" class="text-white">ALL Order Above {{499|currency}} Are Eligble For Free Shipping</p>
+            </div>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+            <!-- Links -->
+            <h6 class="text-uppercase font-weight-bold" style="color: #B9C04C;">Related</h6>
+            <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+            <p>
+              <a class="text-white foot-link" href="{% url 'blog:Blogs' %}">Blogs</a>
+            </p>
+            <p>
+              <a class="text-white foot-link" href="#!">Sell On CoolBuy</a>
+            </p>
+            <p>
+              <a class="text-white foot-link" href="#!">About Us</a>
+            </p>
+            <p>
+              <a class="text-white foot-link" href="#!">Sitemap</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+            <!-- Links -->
+            <h6 class="text-uppercase font-weight-bold" style="color: #B9C04C;">Useful links</h6>
+            <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+            <p>
+              <a class="text-white foot-link" href="#!">Your Account</a>
+            </p>
+            <p>
+              <a class="text-white foot-link" href="#!">My Order</a>
+            </p>
+            <p>
+              <a class="text-white foot-link" href="#!">My Cart</a>
+            </p>
+            <p>
+              <a class="text-white foot-link" href="#!">Help</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+            <!-- Links -->
+            <h6 class="text-uppercase font-weight-bold" style="color: #B9C04C;">Contact</h6>
+            <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+            <p class="text-white">
+              <i class="fas fa-home mr-3"></i> Gonda, Uttar Pradesh, India</p>
+            <p class="text-white">
+              <i class="fas fa-envelope mr-3"></i> info@coolbuy.org</p>
+            <p class="text-white">
+              <i class="fas fa-phone mr-3"></i> +91 63866 24860</p>
+            <p class="text-white">
+              <i class="fas fa-print mr-3"></i> + 05262 298092</p>
+
+          </div>
+          <!-- Grid column -->
+
+          <div>
+            <p class="text-white">
+              <span style="color: #B9C04C;"> Policys </span> :
+              <span><a class="text-white foot-link" href="{% url 'accounts:terms' %}">Terms & Conditions</a></span> |
+              <span><a class="text-white foot-link" href="{% url 'accounts:privacy' %}">Privacy Policy</a></span> |
+              <span><a class="text-white foot-link" href="{% url 'accounts:billing' %}">Shipping & Billing Policy</a></span> |
+              <span><a class="text-white foot-link" href="{% url 'accounts:return' %}">Return Policy</a></span> 
+            </p>
+          </div>
+
+        </div>
+        <!-- Grid row -->
+
+      </div>
+      <!-- Footer Links -->
+
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3" style="color: #B9C04C;">© 2021 Copyright:
+        <a class="text-white foot-link" style="text-decoration: none;" href="#">CoolBuy.Org</a>
+      </div>
+      <!-- Copyright -->
+
+    </footer>
+      <!-- script -->
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+       crossorigin="anonymous"></script>
+      <script src="https://kit.fontawesome.com/b996cccd07.js" crossorigin="anonymous"></script>
+</body>
+</html>

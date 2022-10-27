@@ -1,0 +1,28 @@
+{% extends 'account.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+ {% block head %}
+ <link rel="stylesheet" href="{% static 'css/add_address.css' %}">
+ {% endblock %}
+ {% block body %}
+     <div class="card col-10">
+        <div class="form-group form-control-sm">
+            <h1 class="text-center">Edit Address</h1>
+            <a  class='back' style="float: right;" href="{% url 'accounts:home' %}">Back to site</a> <br>
+            <form method="POST">
+            {% csrf_token %}
+             <div class="col-5">{{ form.reciever_name|as_crispy_field }}</div>
+             <div class="col-5">{{ form.phone_no|as_crispy_field }}</div>
+             <div class="col-5">{{ form.alt_phone_no|as_crispy_field }}</div>
+             <div class="col-5">{{ form.state|as_crispy_field }}</div>
+             <div class="col-5">{{ form.city|as_crispy_field }}</div>
+             <div class="col-5">{{ form.pincode|as_crispy_field }}</div>
+             <div class="col-5">{{ form.address|as_crispy_field }}</div>
+             <div class="col-5">{{ form.locality|as_crispy_field }}</div>
+             <div class="col-5">{{ form.eighteen|as_crispy_field }}</div>
+            <br>
+            <button type="submit" class="btn btn-outline-success">Add Address</button>
+        </form>
+    </div>
+ </div>
+ {% endblock %}

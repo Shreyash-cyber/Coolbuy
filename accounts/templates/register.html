@@ -1,0 +1,52 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoolBuy | Sign Up</title>
+    <!-- link -->
+    <link rel="stylesheet" href="{% static 'bootcss/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #025;">
+    <div class="container-fluid">
+      <a class="navbar-brand text-white" href="{% url 'accounts:home' %}" style="font-size: 25px; font-weight:600;">
+        <img src="{% static 'image/logo/logo.png' %}" class="d-inline-block align-text-center"
+          style="margin-left: 150px; height: 40px;">
+        CoolBuy
+      </a>
+          <strong class="log" ><a class="btn btn-outline-primary text-white" href="{% url 'accounts:login' %}">Log In</a></strong>
+        </div>
+      </nav>
+      <div class="card col-5">
+      <div class="form">
+        <form method="POST">
+          {% csrf_token %}
+          <div class="form-group form-control-sm">
+            <div class="log_img">
+              <img src="{% static 'image/default.png' %}" style="height: 60px;">
+              </div>
+            <h2 class="head text-center"> <strong> Register Here</strong> </h2>
+            {{ form.username|as_crispy_field }}
+            {{ form.email|as_crispy_field }}
+            {{ form.phone|as_crispy_field }}
+            {{ form.password1|as_crispy_field }}
+            {{ form.password2|as_crispy_field }}
+            <p class="text-center" style="font-size: 12px;">I Agreed on the <a href="#">Privacy & Policy</a> </p>
+            <button class="btn btn-primary btn-block-lg" type="submit">Sign up</button>
+            <br>
+            <p class="li">Already have a account? <strong> <a href="{% url 'accounts:login' %}">Click Here</a> </strong>
+            </p>
+          </div>
+        </form>
+      </div>
+      </div>
+    </div>
+</body>
+</html>

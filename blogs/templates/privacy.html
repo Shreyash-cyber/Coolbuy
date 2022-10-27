@@ -1,0 +1,312 @@
+{% load static %}
+{% load custom %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoolBuy | Exclusive Buying Site Return Policy</title>
+    <!-- link -->
+    <link rel="stylesheet" href="{% static 'bootcss/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/privacy.css' %}">
+</head>
+<body>
+        <!-- navbar -->
+    <!-- Image and text -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #025;">
+        <div class="container-fluid">
+          <a class="navbar-brand text-white" href="{% url 'accounts:home' %}" style="font-size: 25px; font-weight:600;">
+            <img src="{% static 'image/logo/logo.png' %}" class="d-inline-block align-text-center"
+              style="margin-left: 150px; height: 40px;">
+            CoolBuy
+          </a>
+  
+          <div class="navbar-nav">
+            <form class="form-inline">
+              <input class="search" type="search" placeholder="Search..." aria-label="Search" required>
+              <button class="btn sea btn-outline-primary"><i class="fas fa-search text-white"></i></button>
+            </form>
+          </div>
+  
+      <!-- Links -->
+      {% if user.is_authenticated %}
+  
+        <!-- Right -->
+        <div class="navbar-nav">
+            <a href="#" class="nav-link text-white text-center"><i class="fas fa-bell"></i></a>
+            <a class="nav-link text-white" href="#"><i class="fas fa-shopping-cart"></i></a>
+            <div class="dropdown">
+            <img class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="height:50px; border-radius: 50%; margin-right:150px;"
+              src="{{ user.profile.profile_pic.url }}">
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li class="item text-center" style="font-weight: bolder;"> Hi <strong
+                  style="color: #B9C04C; cursor:default;"> {{ user.username }} 👋 </strong></li>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item text-center" href="{% url 'accounts:profile'  request.user.username %}">My Account</a>
+              <a class="dropdown-item text-center" href="#">My Order</a>
+              <a class="dropdown-item text-center" href="#">My Address</a>
+              <a class="dropdown-item text-center" href="#">My Cart</a>
+              <a class="dropdown-item text-center" href="{% url 'accounts:logout' %}">Log Out</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item text-center" href="#">Settings</a>
+              <a class="dropdown-item text-center" href="#">Help</a>
+              <a class="dropdown-item text-center" href="#">Privacy Policy</a>
+            </div>
+            </div>
+        </div>
+          {% else %}
+            <div class="navbar-nav">
+              <a class="nav-link text-white" href="#"><i class="fas fa-shopping-cart">Cart</i></a>
+              <a class="nav-link" href="{% url 'accounts:login' %}"><button type="button" class="btn btn-outline-primary text-white" style="border-radius: 10px;">Log In</button></a>
+              <a class="nav-link" href="{% url 'accounts:register' %}"><button type="button" class="btn btn-outline-primary text-white" style="border-radius: 10px;" >Sign Up</button></a>
+            </div>
+          {% endif %}
+        </div>
+      </nav>
+      <!-- section -->
+      <div class="col-11 card">
+        <div class="detail">
+        <h1 class="text-center" style="color: #025;">Privacy Policy</h1>
+          
+            <p>At CoolBuy, accessible from https://www.coolbuy.org/, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by CoolBuy and how we use it.</p>
+
+            <p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.</p>
+
+            <p>This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in CoolBuy. This policy is not applicable to any information collected offline or via channels other than this website. </p>
+         
+          
+            <h2>Consent</h2>
+          
+            <p>By using our website, you hereby consent to our Privacy Policy and agree to its terms.</p>
+         
+            <h2>Information we collect</h2>
+          
+            <p>The personal information that you are asked to provide, and the reasons why you are asked to provide it, will be made clear to you at the point we ask you to provide your personal information.</p>
+            <p>If you contact us directly, we may receive additional information about you such as your name, email address, phone number, the contents of the message and/or attachments you may send us, and any other information you may choose to provide.</p>
+            <p>When you register for an Account, we may ask for your contact information, including items such as name, company name, address, email address, and telephone number.</p>
+     
+            <h2>How we use your information</h2>
+            
+            <p>We use the information we collect in various ways, including to:</p>
+
+            <ul>
+            <li>Provide, operate, and maintain our website</li>
+            <li>Improve, personalize, and expand our website</li>
+            <li>Understand and analyze how you use our website</li>
+            <li>Develop new products, services, features, and functionality</li>
+            <li>Communicate with you, either directly or through one of our partners, including for customer service, to provide you with updates and other information relating to the website, and for marketing and promotional purposes</li>
+            <li>Send you emails</li>
+            <li>Find and prevent fraud</li>
+            </ul>
+         
+            <h2>Log Files</h2>
+            
+            <p>CoolBuy follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this and a part of hosting services' analytics. The information collected by log files include internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the site, tracking users' movement on the website, and gathering demographic information.</p>
+           
+            <h2>Cookies and Web Beacons</h2>
+            
+            <p>Like any other website, CoolBuy uses 'cookies'. These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and/or other information.</p>
+
+            <p>For more general information on cookies, please read <a href="#">"Cookies" from the Privacy Policy</a>.</p>
+
+           
+            <h2>Advertising Partners Privacy Policies</h2>
+            
+            <P>You may consult this list to find the Privacy Policy for each of the advertising partners of CoolBuy.</p>
+
+            <p>Third-party ad servers or ad networks uses technologies like cookies, JavaScript, or Web Beacons that are used in their respective advertisements and links that appear on CoolBuy, which are sent directly to users' browser. They automatically receive your IP address when this occurs. These technologies are used to measure the effectiveness of their advertising campaigns and/or to personalize the advertising content that you see on websites that you visit.</p>
+
+            <p>Note that CoolBuy has no access to or control over these cookies that are used by third-party advertisers.</p>
+           
+            <h2>Third Party Privacy Policies</h2>
+            
+            <p>CoolBuy's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and instructions about how to opt-out of certain options. </p>
+
+            <p>You can choose to disable cookies through your individual browser options. To know more detailed information about cookie management with specific web browsers, it can be found at the browsers' respective websites.</p>
+           
+            <h2>CCPA Privacy Rights (Do Not Sell My Personal Information)</h2>
+            
+            <p>Under the CCPA, among other rights, California consumers have the right to:</p>
+            <p>Request that a business that collects a consumer's personal data disclose the categories and specific pieces of personal data that a business has collected about consumers.</p>
+            <p>Request that a business delete any personal data about the consumer that a business has collected.</p>
+            <p>Request that a business that sells a consumer's personal data, not sell the consumer's personal data.</p>
+            <p>If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us.</p>
+           
+            <h2>GDPR Data Protection Rights</h2>
+            
+            <p>We would like to make sure you are fully aware of all of your data protection rights. Every user is entitled to the following:</p>
+            <p>The right to access – You have the right to request copies of your personal data. We may charge you a small fee for this service.</p>
+            <p>The right to rectification – You have the right to request that we correct any information you believe is inaccurate. You also have the right to request that we complete the information you believe is incomplete.</p>
+            <p>The right to erasure – You have the right to request that we erase your personal data, under certain conditions.</p>
+            <p>The right to restrict processing – You have the right to request that we restrict the processing of your personal data, under certain conditions.</p>
+            <p>The right to object to processing – You have the right to object to our processing of your personal data, under certain conditions.</p>
+            <p>The right to data portability – You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions.</p>
+            <p>If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us.</p>
+           
+            <h2>Children's Information</h2>
+        
+            <p>Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity.</p>
+
+            <p>CoolBuy does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.</p>
+       
+          </div>
+          </div>
+         <!-- footer -->
+    <footer class="page-footer font-small lighten-5" style="background-color: #025;" >
+
+      <div style="background-color: #0bdbdb;">
+        <div class="container">
+
+          <!-- Grid row-->
+          <div class="row py-4 d-flex align-items-center">
+
+            <!-- Grid column -->
+            <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+              <h6 class="mb-0">Get connected with us on social networks!</h6>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-6 col-lg-7 text-center text-md-right">
+
+              <!-- Facebook -->
+              <a class="fb-ic foot-link">
+                <i class="fab fa-facebook-f text-white fa-lg" style="margin-right: 20px;"> </i>
+              </a>
+              <!-- Twitter -->
+              <a class="tw-ic foot-link">
+                <i class="fab fa-twitter text-white fa-lg" style="margin-right: 20px;"> </i>
+              </a>
+              <!-- Google +-->
+              <a class="gplus-ic foot-link">
+                <i class="fab fa-google-plus-g text-white fa-lg" style="margin-right: 20px;"> </i>
+              </a>
+              <!--Instagram-->
+              <a class="ins-ic foot-link">
+               <i class="fab fa-instagram text-white fa-lg" style="margin-right: 20px;"> </i>
+              </a>
+
+            </div>
+            <!-- Grid column -->
+
+          </div>
+          <!-- Grid row-->
+
+        </div>
+      </div>
+
+      <!-- Footer Links -->
+      <div class="container text-center text-md-left mt-5">
+
+        <!-- Grid row -->
+        <div class="row mt-3 dark-grey-text">
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+
+            <!-- Content -->
+            <h6 class="font-weight-bold" style="color: #B9C04C;"><img src="{% static 'image/logo/logo.png' %}" alt="" style="height: 35px;" class="d-inline-block align-text-center"> CoolBuy</h6>
+            <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+            <p class="text-white">CoolBuy is authentic cool stuff ecommerce shopping site which sell product with the help of local vendor and local brands and delivered it to his customers.</p>
+
+            <div style=" margin-top:40px">
+             <p style="float: left;"><i class="fas fa-shipping-fast fa-2x" style="color: #B9C04C;"></i></p>
+             <p style="margin-left: 10px;" class="text-white">ALL Order Above {{499|currency}} Are Eligble For Free Shipping</p>
+            </div>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+            <!-- Links -->
+            <h6 class="text-uppercase font-weight-bold" style="color: #B9C04C;">Related</h6>
+            <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+            <p>
+              <a class="text-white foot-link" href="{% url 'blog:Blogs' %}">Blogs</a>
+            </p>
+            <p>
+              <a class="text-white foot-link" href="#!">Sell On CoolBuy</a>
+            </p>
+            <p>
+              <a class="text-white foot-link" href="#!">About Us</a>
+            </p>
+            <p>
+              <a class="text-white foot-link" href="#!">Sitemap</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+            <!-- Links -->
+            <h6 class="text-uppercase font-weight-bold" style="color: #B9C04C;">Useful links</h6>
+            <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+            <p>
+              <a class="text-white foot-link" href="#!">Your Account</a>
+            </p>
+            <p>
+              <a class="text-white foot-link" href="#!">My Order</a>
+            </p>
+            <p>
+              <a class="text-white foot-link" href="#!">My Cart</a>
+            </p>
+            <p>
+              <a class="text-white foot-link" href="#!">Help</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+            <!-- Links -->
+            <h6 class="text-uppercase font-weight-bold" style="color: #B9C04C;">Contact</h6>
+            <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+            <p class="text-white">
+              <i class="fas fa-home mr-3"></i> Gonda, Uttar Pradesh, India</p>
+            <p class="text-white">
+              <i class="fas fa-envelope mr-3"></i> info@coolbuy.org</p>
+            <p class="text-white">
+              <i class="fas fa-phone mr-3"></i> +91 63866 24860</p>
+            <p class="text-white">
+              <i class="fas fa-print mr-3"></i> + 05262 298092</p>
+
+          </div>
+          <!-- Grid column -->
+
+          <div>
+            <p class="text-white">
+              <span style="color: #B9C04C;"> Policys </span> :
+              <span><a class="text-white foot-link" href="{% url 'accounts:terms' %}">Terms & Conditions</a></span> |
+              <span><a class="text-white foot-link" href="{% url 'accounts:privacy' %}">Privacy Policy</a></span> |
+              <span><a class="text-white foot-link" href="{% url 'accounts:billing' %}">Shipping & Billing Policy</a></span> |
+              <span><a class="text-white foot-link" href="{% url 'accounts:return' %}">Return Policy</a></span> 
+            </p>
+          </div>
+
+        </div>
+        <!-- Grid row -->
+
+      </div>
+      <!-- Footer Links -->
+
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3" style="color: #B9C04C;">© 2021 Copyright:
+        <a class="text-white foot-link" style="text-decoration: none;" href="#">CoolBuy.Org</a>
+      </div>
+      <!-- Copyright -->
+
+    </footer>
+      <!-- script -->
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+       crossorigin="anonymous"></script>
+      <script src="https://kit.fontawesome.com/b996cccd07.js" crossorigin="anonymous"></script>
+</body>
+</html>
